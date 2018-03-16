@@ -1,6 +1,4 @@
 
-//var order = ['demo1', 'demo2', 'demo3']
-//var order = list;
 Page({
   
   data: {

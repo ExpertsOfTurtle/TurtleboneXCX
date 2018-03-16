@@ -7,19 +7,18 @@
           <view class="problems-list-item">
             <view id="{{item.id}}" class="problems-list-item-hd {{item.open ? 'problems-list-item-hd-show' : ''}} scroll-view-item" bindtap="kindToggle">
               <view class=".problems-list-text">{{item.month}}</view>
-              <view class=".problems-list-text">{{item.sum}}</view>
+              <view class=".problems-list-item-arrow">{{item.sum}}</view>
             </view>
             <view class="problems-list-item-bd {{item.open ? 'problems-list-item-bd-show' : ''}}">
               <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
                 <block wx:for-items="{{item.detail}}" wx:for-item="detail" wx:key="*item">
                   <navigator class="navigator">
                     <view class="navigator-text">{{detail.day}}</view>
-                    <view class="navigator-text">{{detail.num}}</view>
+                    <view class="navigator-arrow">{{detail.num}}</view>
                   </navigator>
                 </block>
               </view>
             </view>
-            <view class="{{item.open ? '' : 'problems-list-item-arrow'}}"></view>
           </view>
           
         </block>

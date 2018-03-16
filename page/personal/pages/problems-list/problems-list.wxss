@@ -55,20 +55,6 @@
   padding-right: 50rpx;
   position: relative;
 }
-.navigator-arrow:after {
-  content: " ";
-  display: inline-block;
-  height: 18rpx;
-  width: 18rpx;
-  border-width: 2rpx 2rpx 0 0;
-  border-color: #888888;
-  border-style: solid;
-  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
-  position: absolute;
-  top: 50%;
-  margin-top: -8rpx;
-  right: 28rpx;
-}
 
 
 .problems-list-item {
@@ -79,7 +65,7 @@
   margin-top: 0;
 }
 .problems-list-text{
-  flex: 1;
+  flex:1px;
 }
 
 .problems-list-item-hd {
@@ -113,7 +99,7 @@
   transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
   position:absolute;
   top: 50%;
-  margin-top: -65rpx;
+  margin-top: -8rpx;
   right: 28rpx;
   
 }
