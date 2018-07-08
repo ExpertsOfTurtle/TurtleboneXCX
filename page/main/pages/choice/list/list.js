@@ -7,7 +7,7 @@ Page({
     optionsList: [],
     choiceResult:null
   },
-  onLoad:function() {
+  onShow:function() {
     console.log("Onload");
     this.loadChoiceSummary();
   },
