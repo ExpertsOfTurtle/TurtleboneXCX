@@ -1,0 +1,36 @@
+<view class="container">
+  <view class="page-body">
+    <view class="page-section">
+      <view class="page-section-title">
+        <text>Create Options</text>
+      </view>
+
+      <view class="box">
+        <view class="title">
+          <input class="input" value="{{groupName}}" bindinput="groupNameInput" placeholder="problem" />
+        </view>
+        <view wx:for="{{optionsList}}" wx:for-item="item" wx:for-index="idx">
+          <view class='option'>
+            <view>选项</view>
+            <span>
+              <a href="3" data-index="{{idx}}" bindtap="deleteOption">X</a>
+            </span>
+          </view>
+          <input class='input' data-index="{{idx}}" bindinput="nameInput" value="{{item.optionname}}" placeholder="option" />
+
+          <view class='option'>选中概率</view>
+          <slider data-index="{{idx}}" bindchange="probabilityInput" name="probability" value="{{item.probability}}" step="1" min="1" max="200" show-value/>
+          <view  style='width:100%;height:2px;background:#f3f3f3;'></view>
+        </view>
+        <view class="button-sp-area">
+          <button type="primary" plain="true" bindtap="addOption">增加选项</button>
+          <button class='button' type="primary" bindtap="create">确认修改</button>
+        </view>
+      </view>
+
+
+
+
+    </view>
+  </view>
+</view>

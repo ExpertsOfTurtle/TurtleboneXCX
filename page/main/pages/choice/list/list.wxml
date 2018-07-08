@@ -1,0 +1,28 @@
+<view class="container">  
+  <view class="page-body">
+    <view class="page-section">
+      <view class="page-section-title">
+        <text>Show all options</text>
+      </view>
+      <view class="box" wx:for="{{optionsList}}" wx:key="group.groupid">
+        <view class='option'>
+          <view class="title">{{item.group.groupname}}</view>
+          <view class="result" wx:if="{{choiceResult !=null && choiceResult.groupid ==item.group.groupid}}">恭喜你！抽中{{choiceResult.optionname}}</view>
+        </view>
+        <view  style='width:100%;height:2px;background:#f3f3f3;'></view>
+        <block wx:for="{{item.options}}" wx:key="optionid" wx:for-item="opt">
+          <view class='option'>
+            <view>{{opt.optionname}}</view>
+            <view>{{opt.probability}}%</view>
+          </view>
+        </block>
+        <view  style='width:100%;height:2px;background:#f3f3f3;'></view>
+        <view class='action'>
+            <view bindtap="editOption" data-id="{{item.group.groupid}}">修改命运</view>
+            <view bindtap="doChoice" data-id="{{item.group.groupid}}">选择命运</view>
+            <view bindtap="queryHistory" data-id="{{item.group.groupid}}">历史选择</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

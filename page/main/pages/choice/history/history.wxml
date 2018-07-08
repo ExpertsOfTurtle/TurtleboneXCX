@@ -1,0 +1,18 @@
+
+<view class="container">
+ <view class="page-body">
+    <view class="page-section">
+      <view class="page-section-title">
+        <text>History</text>
+      </view>
+      <view class="box" wx:for="{{history}}" wx:key="idactivity">
+        <view class="title">
+          <view>{{item.strresult1}}</view>
+          <view style='color:grey'>{{item.datetime}}</view>
+        </view>
+        
+        <view >{{item.description}}</view>
+      </view>
+    </view>
+  </view>
+</view>

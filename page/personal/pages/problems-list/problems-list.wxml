@@ -12,10 +12,10 @@
             <view class="problems-list-item-bd {{item.open ? 'problems-list-item-bd-show' : ''}}">
               <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
                 <block wx:for-items="{{item.detail}}" wx:for-item="detail" wx:key="*item">
-                  <navigator class="navigator">
+                  <view class="navigator">
                     <view class="navigator-text">{{detail.day}}</view>
                     <view class="navigator-arrow">{{detail.num}}</view>
-                  </navigator>
+                  </view>
                 </block>
               </view>
             </view>
