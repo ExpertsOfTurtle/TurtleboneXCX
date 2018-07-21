@@ -3,7 +3,9 @@
     <view class="page-section">
       <view class="page-section-title">
         <text>Show all options</text>
+        <navigator class='action'url="/page/main/pages/choice/create/create"> ＋新增选择</navigator>
       </view>
+      
       <view class="box" wx:for="{{optionsList}}" wx:key="group.groupid">
         <view class='option'>
           <view class="title">{{item.group.groupname}}</view>

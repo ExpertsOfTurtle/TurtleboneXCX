@@ -29,23 +29,7 @@ Page({
       }
     });
   },
-  deleteChoice: function (groupId) {
-    var app = getApp();
-    console.log(app);
-    var that = this;
-    var tokenId = app.globalData.openId;
-    console.log(tokenId);
-    wx.request({
-      url: choiceDeleteUrl + "/" + groupId + "?tokenId=" + tokenId,
-      method: 'DELETE',
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (response) {
-        that.loadChoiceSummary();
-      }
-    });
-  },
+  
   doChoice: function(e) {
     console.log(e);
     var that = this;

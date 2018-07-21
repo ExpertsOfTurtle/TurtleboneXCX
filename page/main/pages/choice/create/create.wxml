@@ -24,12 +24,12 @@
         </view>
         <view class="button-sp-area">
           <button type="primary" size='mini' plain="true" bindtap="addOption">增加选项</button>
-          <button class='button' type="primary" bindtap="create">确认修改</button>
+          <button class='button' type="primary" bindtap="update">确认提交</button>
+          <view class="{{groupId==null?'hide':'show'}}">
+          <button class='button' type="primary" bindtap="deleteChoice">删除选题</button>
+          </view>
         </view>
       </view>
-
-
-
 
     </view>
   </view>

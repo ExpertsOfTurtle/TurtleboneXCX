@@ -1,6 +1,7 @@
 const choiceCreateUrl = require('../../../../../config').choiceCreateUrl
 const choiceUpdateUrl = require('../../../../../config').choiceUpdateUrl
 const choiceDetailUrl = require('../../../../../config').choiceSummaryUrl
+const choiceDeleteUrl = require('../../../../../config').choiceDeleteUrl
 
 Page({
   title: 'Options',
@@ -22,7 +23,7 @@ Page({
     optionsList.push({});
     this.setData({ optionsList: optionsList});
   },
-  create:function() {
+  update:function() {
     var optionsList = this.data.optionsList;
     var that = this;
     var param = {
@@ -33,7 +34,7 @@ Page({
       options: that.data.optionsList
     }
     console.log(param);
-    if (that.data.groupId == null){
+    if (that.data.groupId == null) {
       this.sendCreateRequest(param);
     } else {
       this.sendUpdateRequest(param);
@@ -61,23 +62,6 @@ Page({
     optionsList[idx].probability = e.detail.value;
     this.setData({ optionsList: optionsList });
   },
-  sendCreateRequest: function(data) {
-    var app = getApp();
-    var that = this;
-    var tokenId = app.globalData.openId;
-    console.log(tokenId);
-    wx.request({
-      url: choiceCreateUrl + "?tokenId=" + tokenId,
-      method: 'POST',
-      data : data,
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (response) {
-        console.log(response);
-      }
-    });
-  },
   sendUpdateRequest: function (data) {
     var app = getApp();
     var that = this;
@@ -92,38 +76,53 @@ Page({
       },
       success: function (response) {
         console.log(response);
+        wx.navigateBack({//返回
+          delta: 1
+        })
       }
     });
   },
-  selectGroup: function(e) {
-    console.log(e);
-    var that = this;
+  sendCreateRequest: function (data) {
     var app = getApp();
-    var target = e.currentTarget;
-    var groupId = target.dataset.id;
-    console.log(groupId);
-    wx.showActionSheet({
-      itemList: ['Detail', 'History'],
-      success: function (res) {
-        console.log(JSON.stringify(res))
-        var action = res.tapIndex;
-        var url = "";
-        console.log(action) // 用户点击的按钮，从上到下的顺序，从0开始
-        if (action == 0) {
-          url = '../detail/detail?groupId=' + groupId
-        } else if (action == 1) {
-          url = '../history/history?groupId=' + groupId
-        } 
-        console.log(url);
-        wx.navigateTo({
-          url: url
-          })
+    var that = this;
+    var tokenId = app.globalData.openId;
+    console.log(tokenId);
+    wx.request({
+      url: choiceCreateUrl + "?tokenId=" + tokenId,
+      method: 'POST',
+      data: data,
+      header: {
+        'content-type': 'application/json'
       },
-      fail: function (res) {
-        console.log(res.errMsg)
+      success: function (response) {
+        console.log(response);
+        wx.navigateBack({//返回
+          delta: 1
+        })
       }
-    })
+    });
   },
+  deleteChoice: function (groupId) {
+    var app = getApp();
+    console.log(app);
+    var that = this;
+    var tokenId = app.globalData.openId;
+    console.log(tokenId);
+    console.log(that.data.groupId);
+    wx.request({
+      url: choiceDeleteUrl + "/" + that.data.groupId + "?tokenId=" + tokenId,
+      method: 'DELETE',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (response) {
+        console.log(response);
+        wx.navigateBack({//返回
+          delta: 1
+        })
+      }
+    });
+  }, 
   loadChoice: function () {
     var app = getApp();
     var that = this;
@@ -142,5 +141,5 @@ Page({
         that.setData({ optionsList: response.data.options });
       }
     });
-  },
+    }
 })
